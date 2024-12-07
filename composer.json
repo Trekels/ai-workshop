@@ -21,6 +21,7 @@
         "league/container": "^4.2",
         "symfony/form": "^7.2",
         "twig/twig": "^3.0",
-        "symfony/twig-bridge": "^7.2"
+        "symfony/twig-bridge": "^7.2",
+        "guzzlehttp/guzzle": "^7.0"
     }
 }

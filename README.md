@@ -15,6 +15,9 @@
 - [Slim](https://www.slimframework.com/), a micro php web framework
 - [Guzzle PSR-7](https://github.com/guzzle/psr7) message implementation
 - [thephpleague/container PRS-11](https://github.com/thephpleague/container) DI Container
+- [SF Forms](https://symfony.com/doc/current/components/form.html)
+- [Twig templating](https://twig.symfony.com/)
+- [guzzle HTTP client](https://docs.guzzlephp.org/en/stable/overview.html)
 
 ### Install and run
 
