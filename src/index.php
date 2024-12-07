@@ -1,7 +1,0 @@
-<?php
-
-namespace App;
-
-require __DIR__ . '/../vendor/autoload.php';
-
-echo "I'm empty \n\r";
