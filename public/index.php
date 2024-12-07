@@ -2,18 +2,16 @@
 
 declare(strict_types=1);
 
-use App\Controller as AppController;
 use League\Container as LeagueContainer;
 use Slim\Factory\AppFactory;
 
 require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../config/bootstrap.php';
 
-$container = new LeagueContainer\Container();
-$container->delegate(new LeagueContainer\ReflectionContainer());
-
+/** @var LeagueContainer\Container $container */
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 
-$app->get('/', AppController\HomeController::class);
+require __DIR__ . '/../config/routes.php';
 
 $app->run();

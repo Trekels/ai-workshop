@@ -18,6 +18,9 @@
         "php": "8.4.*",
         "slim/slim": "4.*",
         "guzzlehttp/psr7": "^2",
-        "league/container": "^4.2"
+        "league/container": "^4.2",
+        "symfony/form": "^7.2",
+        "twig/twig": "^3.0",
+        "symfony/twig-bridge": "^7.2"
     }
 }
