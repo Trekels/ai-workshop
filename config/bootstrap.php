@@ -10,17 +10,19 @@ use Symfony\Bridge\Twig\Extension\FormExtension;
 use Symfony\Bridge\Twig\Form\TwigRendererEngine;
 use Symfony\Component\Form\FormFactoryInterface;
 
+// Move up one directory and load the .env file
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
+$dotenv->load();
+
+// Instantiate the dependency container and enable autowiring trough reflection
 $container = new LeagueContainer\Container();
 $container->delegate(new LeagueContainer\ReflectionContainer());
 
+// Load and configure twig templating engine with the symfony forms component for easy form handling
 $container->add(Twig\Environment::class, function () {
-    $viewsDirectory = realpath(__DIR__ . '/../views');
-    $appVariableReflection = new \ReflectionClass('\Symfony\Bridge\Twig\AppVariable');
-    $vendorTwigBridgeDirectory = dirname($appVariableReflection->getFileName());
-
     $twig = new Twig\Environment(new Twig\Loader\FilesystemLoader([
-        $viewsDirectory,
-        $vendorTwigBridgeDirectory . '/Resources/views/Form',
+        realpath(__DIR__ . '/../views'),
+        dirname(new \ReflectionClass('\Symfony\Bridge\Twig\AppVariable')->getFileName()) . '/Resources/views/Form',
     ]));
 
     $formEngine = new TwigRendererEngine(['Forms/forms.html.twig'], $twig);
@@ -35,5 +37,5 @@ $container->add(Twig\Environment::class, function () {
     return $twig;
 });
 
+// Make the form factory available as a service
 $container->add(FormFactoryInterface::class, static fn () => Forms::createFormFactory());
-
