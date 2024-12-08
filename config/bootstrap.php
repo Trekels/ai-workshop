@@ -39,3 +39,5 @@ $container->add(Twig\Environment::class, function () {
 
 // Make the form factory available as a service
 $container->add(FormFactoryInterface::class, static fn () => Forms::createFormFactory());
+
+require __DIR__ . '/services.php';
