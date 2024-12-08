@@ -4,6 +4,9 @@
 # Project folder structure 
 --------------------------
 .
+|- bin
+|   |- console.php    # <- Php cli tool for running command line tools
+|
 |- config
 |   |- bootstrap.php  # <- General setup of the application environment.
 |   |- routes.php     # <- Binding of routes and controllers.
@@ -49,3 +52,10 @@ In [services](../config/services.php), we will configure services that need spec
 that is not possible with the containers autowiring functionality.
 
 Once all the bootstrapping and config is loaded, the App is started using `$app->run()`.
+
+## CLI Usage
+
+The symfony console component is used to run cli script/commands. These are
+ran using the executable [console script](../bin/console.php).
+
+Example: `php bin/console <command-name>`

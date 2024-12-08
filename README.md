@@ -22,6 +22,7 @@
 - [Twig templating](https://twig.symfony.com/)
 - [guzzle HTTP client](https://docs.guzzlephp.org/en/stable/overview.html)
 - [SLEEK File DB](https://sleekdb.github.io)
+- [Symfony Console](https://symfony.com/doc/current/components/console.html)
 
 ### Install and run
 
