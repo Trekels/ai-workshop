@@ -8,7 +8,7 @@ final class ResponseParser
 {
     public function parse(string $responseBody): string
     {
-        return array_reduce(explode('data: ', $responseBody), function (string $result, string $chunk) {
+        return trim(array_reduce(explode('data: ', $responseBody), function (string $result, string $chunk) {
             $chunk = trim($chunk);
 
             // Skip empty lines or the "[DONE]" signal
@@ -22,6 +22,6 @@ final class ResponseParser
             }
 
             return $result . $decoded['choices'][0]['text'];
-        }, '');
+        }, ''));
     }
 }
