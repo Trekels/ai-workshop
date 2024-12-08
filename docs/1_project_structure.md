@@ -17,7 +17,10 @@
 |
 |- src
 |   |- Controller     # <- All app controllers can be found here
-|   |- ...            # <- Other project files
+|   |- Model          # <- Data value objects
+|   |- Repository     # <- Database interfacing
+|   |- Service        # <- Application business logic
+|   |- ...
 |
 |- views
 |   |- twig files     # <- All app twig view files
