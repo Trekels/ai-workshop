@@ -8,7 +8,7 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Twig\Environment;
 
-final readonly class HomeController
+final class ExploreController
 {
     public function __construct(
         private Environment $twig,
@@ -16,6 +16,12 @@ final readonly class HomeController
 
     public function __invoke(Request $request): Response
     {
-        return new Response(body: $this->twig->render('Home/overview.html.twig'));
+        $world = $request->getAttribute('world');
+
+        // TODO: Load correct world and conversation history
+
+        return new Response(body: $this->twig->render('Explore/chat.html.twig', [
+            'world' => $world,
+        ]));
     }
 }

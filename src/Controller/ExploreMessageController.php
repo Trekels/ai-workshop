@@ -8,7 +8,7 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Twig\Environment;
 
-final readonly class HomeController
+final class ExploreMessageController
 {
     public function __construct(
         private Environment $twig,
@@ -16,6 +16,11 @@ final readonly class HomeController
 
     public function __invoke(Request $request): Response
     {
-        return new Response(body: $this->twig->render('Home/overview.html.twig'));
+        // TODO Handle message
+
+        return new Response(body: $this->twig->render('Explore/_bot_message.html.twig', [
+            'date' => new \DateTimeImmutable(),
+            'message' => 'TODO: Implement this',
+        ]));
     }
 }

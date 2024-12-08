@@ -1,0 +1,33 @@
+{% extends 'index.html.twig' %}
+
+{% block title %} Explore {{ world }} {% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" type="text/css" href="/assets/chat.css" />
+{% endblock %}
+
+{% block body %}
+  <section class="msger">
+    <header class="msger-header">
+      <div class="msger-header-title">
+        <a href="/" style="text-decoration: none"> 🔙 </a> &nbsp;&nbsp;
+        Explore the world: {{ world }}
+      </div>
+    </header>
+
+    <main class="msger-chat">
+      {# TODO: Loop over historical conversation #}
+{#      {% include 'Explore/_bot_message.html.twig' %}#}
+{#      {% include 'Explore/_user_message.html.twig' %}#}
+    </main>
+
+    <form class="msger-inputarea" action="/explore/{{ world }}/message" method="post">
+      <input type="text" class="msger-input" placeholder="Where shall you go today?...">
+      <button type="submit" class="msger-send-btn">Send</button>
+    </form>
+  </section>
+{% endblock body %}
+
+{% block scripts %}
+  <script type="application/javascript" src="/assets/chat.js"></script>
+{% endblock scripts %}
