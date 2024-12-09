@@ -13,15 +13,15 @@ class ConversationRepository
     public function __construct(private Store $store) {}
 
     /**
-     * @param array{ world: int, history: array{ role: string, time: string, message: string }} $conversation
+     * @param array{ world: int, context: string, history: array{ role: string, time: string, message: string }} $conversation
      */
     public function save(array $conversation): void
     {
-        $this->store->insert($conversation);
+        $this->store->updateOrInsert($conversation);
     }
 
     /**
-     * @return array{ world: int, history: array{ role: string, time: string, message: string }}|null
+     * @return array{ world: int, context: string, history: array{ role: string, time: string, message: string }}|null
      */
     public function findForWorld(int $id): ?array
     {

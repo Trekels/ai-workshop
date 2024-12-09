@@ -29,7 +29,7 @@
   }
 
   const handleMessage = form => {
-    fetch(form.action, { method: 'POST' })
+    fetch(form.action, { method: 'POST', body: JSON.stringify({ message: messageInput.value }) })
       .then(r => r.text().then(content => chatBox.insertAdjacentHTML('beforeend', content)));
   }
 
@@ -40,8 +40,8 @@
     if (!msgText) return;
 
     appendUserMessage(msgText);
-    messageInput.value = "";
-
     handleMessage(event.target);
+
+    messageInput.value = "";
   });
 })()

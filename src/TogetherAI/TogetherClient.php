@@ -19,10 +19,7 @@ final readonly class TogetherClient
         $response = $this->client->request('POST', 'chat/completions', [
             'json' => [
                 "model" => $request->model,
-                "messages" => [
-                    ['role' => 'system', 'content' => $request->system],
-                    ['role' => 'user', 'content' => $request->prompt],
-                ],
+                "messages" => $request->getMessages(),
                 "max_tokens" => null,                                                         # | < ------------------
                 "temperature" => 1,                                                           # |  These can be moved
                 "top_p" => 0.7,                                                               # |  to a config object

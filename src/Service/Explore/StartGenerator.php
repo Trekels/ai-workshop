@@ -33,18 +33,20 @@ final readonly class StartGenerator
         $townDesc = $world['kingdoms'][0]['towns'][0]['description'];
         $characterDesc = $world['kingdoms'][0]['towns'][0]['characters'][0]['description'];
 
-        $conversationStart = $this->client->createChatCompletion(new ChatCompletionRequest(self::SYSTEM, "
-
+        $context ="
             World: $worldDesc
             Kingdom: $kingdomDesc
             Town: $townDesc
             Character: $characterDesc
-        "));
+        ";
+
+        $conversationStart = $this->client->createChatCompletion(new ChatCompletionRequest(self::SYSTEM,$context));
 
         return [
             'world' => $world['_id'],
+            'context' => $context,
             'history' => [
-                ['role' => 'bot', 'time' => new \DateTime()->format('H:i'), 'message' => $conversationStart],
+                ['role' => 'assistant', 'time' => new \DateTime()->format('H:i'), 'message' => $conversationStart],
             ],
         ];
     }
