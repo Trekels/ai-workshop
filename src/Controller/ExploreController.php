@@ -20,7 +20,7 @@ final class ExploreController
 
         // TODO: Load correct world and conversation history
 
-        return new Response(body: $this->twig->render('Explore/chat.html.twig', [
+        return new Response(body: $this->twig->render('World/explore.html.twig', [
             'world' => $world,
         ]));
     }

@@ -8,7 +8,7 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Twig\Environment;
 
-final class ExploreMessageController
+final readonly class OverviewController
 {
     public function __construct(
         private Environment $twig,
@@ -16,11 +16,10 @@ final class ExploreMessageController
 
     public function __invoke(Request $request): Response
     {
-        // TODO Handle message
+        // TODO: Fetch available worlds form the db
 
-        return new Response(body: $this->twig->render('World/includes/_bot_message.html.twig', [
-            'date' => new \DateTimeImmutable(),
-            'message' => 'TODO: Implement this',
+        return new Response(body: $this->twig->render('World/overview.html.twig', [
+            'worlds' => [],
         ]));
     }
 }

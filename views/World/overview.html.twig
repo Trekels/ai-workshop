@@ -1,0 +1,28 @@
+{% extends 'index.html.twig' %}
+
+{% block title %} Overview {% endblock %}
+
+{% block body %}
+<div class="container">
+  <div class="list-group mt-5">
+    <a href="#" class="list-group-item list-group-item-action active text-center">
+      All of the available worlds to explore
+    </a>
+
+    {% for world in worlds %}
+      <a href="/explore/{{ world.id }}" class="list-group-item list-group-item-action">
+        {{ world.name }}
+      </a>
+    {% else %}
+      <div class="list-group-item text-center">No worlds available ...</div>
+    {% endfor %}
+  </div>
+
+  <div class="mt-3 text-center">
+    <a href="/create" class="btn btn-success text-center">
+      ✨Create a new world ✨
+    </a>
+  </div>
+</div>
+
+{% endblock %}
