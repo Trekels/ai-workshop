@@ -19,4 +19,12 @@ class WorldRepository
     {
         $this->store->insert($world);
     }
+
+    /**
+     * @return array{ _id: int, name: string, description: string, kingdoms: array }
+     */
+    public function findAllWorlds(): array
+    {
+        return $this->store->findAll();
+    }
 }
