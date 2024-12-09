@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Repository\ConversationRepository;
 use App\Repository\RepositoryFactory;
 use App\Repository\WorldRepository;
 use App\TogetherAI\ClientFactory;
@@ -16,4 +17,8 @@ $container->add(RepositoryFactory::class)->addArgument(PROJECT_ROOT . $_ENV['DB_
 
 $container->add(WorldRepository::class, function () use ($container) {
     return new WorldRepository($container->get(RepositoryFactory::class)->create(WorldRepository::NAME));
+});
+
+$container->add(ConversationRepository::class, function () use ($container) {
+    return new ConversationRepository($container->get(RepositoryFactory::class)->create(ConversationRepository::NAME));
 });

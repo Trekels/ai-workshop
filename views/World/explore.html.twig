@@ -1,6 +1,6 @@
 {% extends 'index.html.twig' %}
 
-{% block title %} Explore {{ world }} {% endblock %}
+{% block title %} Explore {{ world.name }} {% endblock %}
 
 {% block styles %}
   <link rel="stylesheet" type="text/css" href="/assets/chat.css" />
@@ -16,9 +16,9 @@
     </header>
 
     <main class="msger-chat">
-      {# TODO: Loop over historical conversation #}
-{#      {% include 'Explore/_bot_message.html.twig' %}#}
-{#      {% include 'Explore/_user_message.html.twig' %}#}
+      {% for message in conversation.history %}
+        {% include 'World/includes/_' ~ message.role ~ '_message.html.twig' %}
+      {% endfor %}
     </main>
 
     <form class="msger-inputarea" action="/explore/{{ world._id }}/message" method="post">

@@ -29,9 +29,9 @@ class WorldRepository
     }
 
     /**
-     * @return array{ _id: int, name: string, description: string, kingdoms: array }
+     * @return array{ _id: int, name: string, description: string, kingdoms: array }|null
      */
-    public function findWorld(int $id): array
+    public function findWorld(int $id): ?array
     {
         return $this->store->findById($id);
     }
