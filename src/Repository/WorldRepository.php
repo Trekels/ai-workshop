@@ -21,10 +21,18 @@ class WorldRepository
     }
 
     /**
-     * @return array{ _id: int, name: string, description: string, kingdoms: array }
+     * @return array<array-key, array{ _id: int, name: string, description: string, kingdoms: array }>
      */
     public function findAllWorlds(): array
     {
         return $this->store->findAll();
+    }
+
+    /**
+     * @return array{ _id: int, name: string, description: string, kingdoms: array }
+     */
+    public function findWorld(int $id): array
+    {
+        return $this->store->findById($id);
     }
 }
