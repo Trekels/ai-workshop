@@ -16,7 +16,7 @@ final class ExploreController
 
     public function __invoke(Request $request): Response
     {
-        $world = $request->getAttribute('world');
+        $world = $request->getAttribute('world_id');
 
         // TODO: Load correct world and conversation history
 
