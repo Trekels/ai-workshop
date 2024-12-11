@@ -22,6 +22,7 @@ final class ExploreController
 
         return new Response(body: $this->twig->render('World/explore.html.twig', [
             'world' => $world,
+            // 'conversation' => $conversation,
         ]));
     }
 }
