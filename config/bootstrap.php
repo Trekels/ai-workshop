@@ -11,8 +11,8 @@ use Symfony\Bridge\Twig\Form\TwigRendererEngine;
 use Symfony\Component\Form\FormFactoryInterface;
 
 // Move up one directory and load the .env file
-$dotenv = Dotenv\Dotenv::createImmutable(PROJECT_ROOT);
-$dotenv->load();
+//$dotenv = Dotenv\Dotenv::createImmutable(PROJECT_ROOT);
+//$dotenv->load();
 
 // Instantiate the dependency container and enable autowiring trough reflection
 $container = new LeagueContainer\Container();
@@ -22,7 +22,7 @@ $container->delegate(new LeagueContainer\ReflectionContainer());
 $container->add(Twig\Environment::class, function () {
     $twig = new Twig\Environment(new Twig\Loader\FilesystemLoader([
         realpath(PROJECT_ROOT . '/views'),
-        dirname(new \ReflectionClass('\Symfony\Bridge\Twig\AppVariable')->getFileName()) . '/Resources/views/Form',
+        dirname((new \ReflectionClass('\Symfony\Bridge\Twig\AppVariable'))->getFileName()) . '/Resources/views/Form',
     ]));
 
     $formEngine = new TwigRendererEngine(['Forms/forms.html.twig'], $twig);
