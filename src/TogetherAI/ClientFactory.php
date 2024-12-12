@@ -12,6 +12,12 @@ readonly class ClientFactory
 
     public function create(): TogetherClient
     {
-        return new TogetherClient(/*< create a new client with default options >*/);
+        return new TogetherClient(new Client([
+            'base_uri' => 'https://api.together.xyz/v1/',
+            'headers' => [
+                'Authorization' => 'Bearer ' . $this->apiKey,
+                'Accept' => 'application/json',
+            ],
+        ]), new ResponseParser());
     }
 }
